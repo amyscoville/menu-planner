@@ -6,70 +6,124 @@ class Form extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            inputs: {
+            recipe: {
                 name: '',
-                ingredients: [{
-                    name: '',
-                    amount: '',
-                    unit: ''
-                }],
+                ingredients: [],
                 directions: '',
                 cookTime: '',
                 imgUrl: ''
+            },
+            ingredient: {
+                ingName: '',
+                amount: '',
+                unit: 'teaspoon(s)'
             }
         }
         this.formSubmit = this.formSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleIngredientChange = this.handleIngredientChange.bind(this);
+        this.addIngredient = this.addIngredient.bind(this);
     }
 
     handleChange(e) {
         let { name, value } = e.target;
         this.setState(prevState => {
             return {
-                ...prevState,
-                [name]: value
+                recipe: {
+                    ...prevState.recipe,
+                    [name]: value
+                }
             }
-        })
+        });
+    }
+
+    handleIngredientChange(e) {
+        let { name, value } = e.target;
+        if (name === 'unit') {
+            this.setState(prevState => {
+                return {
+                    ingredient: {
+                        ...prevState.ingredient,
+                        'unit': value
+                    }
+                }
+            })
+        } else {
+            this.setState(prevState => {
+                return {
+                    ingredient: {
+                        ...prevState.ingredient,
+                        [name]: value
+                    }
+                }
+            });
+        }
+    }
+
+    addIngredient() {
+        let { ingredient } = this.state;
+        this.setState((prevState) => {
+            return {
+                recipe: {
+                    ...prevState.recipe,
+                    ingredients: [...prevState.recipe.ingredients, ingredient]
+                },
+                ingredient: {
+                    ingName: '',
+                    amount: '',
+                    unit: 'teaspoon(s)'
+                }
+            }
+        });
     }
 
     formSubmit(e) {
         e.preventDefault();
-        this.props.addRecipe(this.state.inputs);
+        this.props.addRecipe(this.state.recipe);
         this.setState({
-            inputs: {
+            recipe: {
                 name: '',
-                ingredients: [{
-                    ingName: '',
-                    amount: '',
-                    unit: ''
-                }],
+                ingredients: [],
                 directions: '',
                 cookTime: '',
                 imgUrl: ''
             }
-        })
+        });
     }
 
     render() {
-        let { name, imgUrl, directions, cookTime } = this.state.inputs;
-        let { ingName, amount, unit } = this.state.inputs.ingredients;
+        let { name, imgUrl, directions, cookTime, ingredients } = this.state.recipe;
+        let { ingName, amount, unit } = ingredients;
         return (
-            <form onSumbit={this.formSubmit}>
+            <form onSubmit={this.formSubmit}>
                 <input onChange={this.handleChange} type="text" name="name" value={name} placeholder="Recipe Name" />
                 <div>
-                    <input onChange={this.handleChange} type="text" name="ingName" value={ingName} placeholder="Enter one ingredient at a time" /> 
-                    <input type="text" name="amount" value={amount} placeholder="Amt."/>
-                    <select name="unit" value={unit} id="unit">
+                    <input onChange={this.handleIngredientChange} type="text" name="ingName" value={ingName} placeholder="Ingredient name" />
+                    <input onChange={this.handleIngredientChange} type="number" name="amount" value={amount} placeholder="Amt." />
+                    <select name="unit" value={unit} id="unit" onChange={this.handleIngredientChange}>
                         <option value="teaspoon(s)">teaspoon(s)</option>
                         <option value="tablespoon(s)">tablespoon(s)</option>
                         <option value="cup(s)">cup(s)</option>
                     </select>
+                    <button onClick={this.addIngredient}>Add Ingredient</button>
                 </div>
+                {/* <ul> */}
+                {/* {ingredients.map((ingredient, index) => {
+                        return <li key={index}>{ingredient.amount}{ingredient.unit}{ingredient.ingName}</li>
+                    })} */}
+                {/* </ul> */}
                 <input onChange={this.handleChange} type="text" name="directions" value={directions} placeholder="Directions" />
                 <input onChange={this.handleChange} type="text" name="imgUrl" value={imgUrl} placeholder="Image URL" />
-                <button>Add Recipe</button>
+                <button type="submit">Add Recipe</button>
             </form>
         )
     }
 }
 
-export default Form;
+const mapStateToProps = (state) => {
+    return {
+        recipes: state.recipes
+    }
+}
+
+export default connect(mapStateToProps, { addRecipe })(Form);

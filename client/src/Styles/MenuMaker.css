@@ -1,0 +1,30 @@
+.menu-maker-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 10px;
+    grid-template-areas: "r m";
+}
+
+.HOLLA {
+    grid-area: r;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.menu-template-wrapper {
+    grid-area: m;
+}
+
+.menu-template {
+    height: 1000px;
+    width: 350px;
+}
+
+.dayofweek {
+    height: 100px;
+    width: 300px;
+}
+
+.menu-template-wrapper, .dayofweek {
+    border: 1px solid black;
+}

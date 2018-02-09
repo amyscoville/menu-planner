@@ -32,7 +32,7 @@ recipesRoute.route('/:id')
         });
     })
     .put((req, res) => {
-        Recipes.findByIdAndRemove(req.params.id, req.body, {new: true}, (err, updatedRecipe) => {
+        Recipes.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedRecipe) => {
             if (err) return res.status(500).send(err);
             return res.send(updatedRecipe);
         });

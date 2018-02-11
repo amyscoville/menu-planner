@@ -1,0 +1,13 @@
+.weekday {
+    border: 1px solid black; 
+    margin: 5px;
+}
+
+.day-name {
+    padding: 5px 10px;
+}
+
+.weekday-recipe {
+    padding: 10px;
+    display: flex;
+}

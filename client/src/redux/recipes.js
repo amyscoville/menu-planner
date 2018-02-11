@@ -16,6 +16,11 @@ const recipesReducer = (recipes = [], action) => {
                 }
             }
             return newRecipes;
+        case "DELETE_RECIPE":
+            let recipeArr = recipes
+            return recipeArr.filter((recipe) => {
+                    return recipe._id !== action.id;
+                })
         default:
             return recipes;
     }
@@ -57,14 +62,28 @@ export function updateRecipe(id, updatedRecipe) {
             .then(response => {
                 dispatch({
                     type: 'UPDATE_RECIPE',
-                    updatedRecipe: response.data
+                    id
                 });
             })
             .catch(err => {
                 console.error(err);
             })
     }
+}
 
+export function deleteRecipe(id) {
+    return function (dispatch) {
+        axios.delete(recipesUrl + '/' + id)
+            .then(response => {
+                dispatch({
+                    type: 'DELETE_RECIPE',
+                    id
+                });
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    }
 }
 
 export default recipesReducer;

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getRecipes } from '../redux/recipes';
+import { getRecipes, deleteRecipe } from '../redux/recipes';
+import {Link} from 'react-router-dom';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 import Recipe from './Recipe.js';
 import Modal from './Modal';
 
@@ -24,16 +27,30 @@ class Recipes extends Component {
         })
     }
 
+    deleteRecipe(id) {
+        this.props.deleteRecipe(id);
+    }
+
+    clickDelete(id) {
+        confirmAlert({
+            title: 'Confirm to submit',
+            message: 'Are you sure you want to delete this recipe?',
+            confirmLabel: 'Yes',
+            cancelLabel: 'Cancel',
+            onConfirm: () => this.deleteRecipe(id)
+        });
+    }
+
     render() {
-        let { recipes } = this.props;
+        let {recipes} = this.props;
         if (this.state.showModal) {
             return (
                 <div>
                     <Modal toggle={this.toggleModal} />
                     <div className="recipes-wrapper">
-                        <nav className="recipe-nav"> <button className="recipe-nav-btn" onClick={this.toggleModal}>ADD RECIPE</button> <button className="recipe-nav-btn">MAKE MENU</button></nav>
+                        <nav className="recipe-nav"> <button className="recipe-nav-btn" onClick={this.toggleModal}>ADD RECIPE</button> <Link to="/buildmenu"><button className="recipe-nav-btn">MAKE MENU</button></Link></nav>
                         {recipes.map((recipe, index) => {
-                            return <Recipe key={index} recipe={recipe} />
+                            return <Recipe key={index} recipe={recipe} deleteRecipe={this.deleteRecipe} />
                         })}
                     </div>
                 </div>
@@ -41,9 +58,9 @@ class Recipes extends Component {
         }
         return (
             <div className="recipes-wrapper">
-                <nav className="recipe-nav"> <button className="recipe-nav-btn" onClick={this.toggleModal}>ADD RECIPE</button> <button className="recipe-nav-btn">MAKE MENU</button></nav>
+                <nav className="recipe-nav"> <button className="recipe-nav-btn" onClick={this.toggleModal}>ADD RECIPE</button> <Link to="/buildmenu"><button className="recipe-nav-btn">MENU</button></Link></nav>
                 {recipes.map((recipe, index) => {
-                    return <Recipe key={index} recipe={recipe} />
+                    return <Recipe key={index} recipe={recipe} deleteRecipe={() => {this.clickDelete(recipe._id)}}/>
                 })}
             </div>
         )
@@ -56,4 +73,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, { getRecipes })(Recipes);
+export default connect(mapStateToProps, { getRecipes, deleteRecipe })(Recipes);

@@ -123,7 +123,7 @@ class Form extends Component {
     }
 
     render() {
-        let { name, imgUrl, directions, cookTime } = this.state.recipe;
+        let { name, imgUrl, directions } = this.state.recipe;
         let { ingName, amount, unit } = this.state.ingredient;
         let { ingredients } = this.state;
         return (

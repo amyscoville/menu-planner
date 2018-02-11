@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { getSingleRecipe } from '../redux/recipe';
+import { deleteRecipe } from '../redux/recipes';
 import { connect } from 'react-redux';
 import Form from './Form';
 
@@ -14,29 +15,28 @@ class IndvRecipe extends Component {
         this.toggleEdit = this.toggleEdit.bind(this);
     }
 
+    componentDidMount() {
+        let { id } = this.props.match.params;
+        this.props.getSingleRecipe(id);
+    }
+
     toggleEdit() {
         this.setState({
             editing: !this.state.editing
         })
     }
 
-    componentDidMount() {
-        let { id } = this.props.match.params;
-        console.log('id=', id);
-        this.props.getSingleRecipe(id);
-    }
-
     render() {
         let { name, imgUrl, directions, ingredients } = this.props.recipe.data;
         let { loading } = this.props.recipe;
-        let imgStyle = { backgroundImage: `url(${imgUrl})`, height: "400px", width: "400px", backgroundSize: "cover", backgroundPosition: "center" }
+        let imgStyle = { backgroundImage: `url(${imgUrl})`, height: "300px", width: "300px", backgroundSize: "cover", backgroundPosition: "center" }
         if (this.state.editing) {
             return <Form toggle={this.toggleEdit}{...this.props.recipe.data} />
         }
         return (
             !loading ?
                 <div>
-                    <nav> <Link to='/recipes'>back to recipes</Link> </nav>
+                    <nav> <Link to='/recipes'>back to recipes</Link> <Link to="/buildmenu">menu</Link></nav>
                     <div style={imgStyle}></div>
                     <h1>{name}</h1>
                     <ul>
@@ -45,7 +45,7 @@ class IndvRecipe extends Component {
                         })}
                     </ul>
                     <p>{directions}</p>
-                    <button onClick={this.toggleEdit}>edit recipe</button>
+                    <button onClick={this.toggleEdit}>edit recipe</button> 
                 </div>
                 :
                 <div>LOADING</div>
@@ -55,9 +55,9 @@ class IndvRecipe extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        recipe: state.recipe
+        recipe: state.recipe,
     }
 }
 
-export default connect(mapStateToProps, { getSingleRecipe })(IndvRecipe);
+export default connect(mapStateToProps, { getSingleRecipe, deleteRecipe })(IndvRecipe);
 

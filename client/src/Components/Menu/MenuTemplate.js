@@ -11,11 +11,11 @@ class MenuTemplate extends Component {
         let { loading, data } = this.props.menu;
         return (
             loading ?
-                <div>
+                <div className='menu-template-wrapper'>
                     Loading...
                 </div>
                 :
-                <div>
+                <div className="menu-template-wrapper">
                     {data.map((menuItem, index) => {
                         return <Weekday key={index} {...menuItem}/>
                     })}

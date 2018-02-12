@@ -3,3 +3,52 @@
     flex-wrap: wrap;
     justify-content: center;
 }
+
+.recipes-nav {
+    background-color: #323031;
+    position: fixed;
+    height: 55px;
+    padding-right: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.recipes-buttons {
+    display: flex;
+}
+
+.spiced {
+    padding-left: 3%;
+    padding-bottom: .5%;
+    font-family: 'Caveat Brush', cursive;
+    font-size: 35px;
+    color: #DB3A34;
+}
+
+.recipe-display-wrapper {
+    margin-top: 55px;
+    padding-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.recipes-nav-btn {
+    background-color: #FFC857 ;
+    color: white;
+    border-radius: 2px;
+    height: 25px;
+    padding: 3px 10px;
+    text-decoration: none;
+    margin: auto 5px;
+}
+
+.recipes-nav-btn:hover {
+    cursor: pointer;
+}
+
+.make-menu {
+    background-color: #177E89;
+}

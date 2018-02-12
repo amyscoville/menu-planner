@@ -1,0 +1,65 @@
+.indv-recipe-nav {
+    background-color: #323031;
+    position: fixed;
+    top: 0;
+    height: 55px;
+    padding-right: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.indv-recipe-nav-btn {
+    background-color: #FFC857 ;
+    color: white;
+    border-radius: 2px;
+    height: 25px;
+    padding: 3px 10px;
+    text-decoration: none;
+    margin: auto 5px;
+}
+
+.indv-recipe-nav-btn:hover {
+    cursor: pointer;
+}
+
+.indv-menu {
+    background-color: #177E89;
+}
+
+.indv-recipe-wrapper {
+    margin-top: 55px;
+    padding: 20px;
+    display: flex;
+}
+
+.img-btn-wrapper > button{
+    margin-top: 15px;
+    background-color: #084C61;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+.indv-recipe-info {
+    padding: 0px 30px;
+}
+
+.recipe-name-h4 {
+    margin-bottom: 15px;
+}
+
+.ing-ul {
+    margin: 10px 0px;
+}
+
+.ing-li {
+    list-style: none;
+    line-height: 25px;
+}
+
+.directions-header {
+    margin: 10px 0px;
+}

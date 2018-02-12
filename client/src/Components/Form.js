@@ -130,7 +130,7 @@ class Form extends Component {
             <form onSubmit={this.formSubmit} className="form-wrapper">
                 <input onChange={this.handleChange} type="text" name="name" value={name} placeholder="Recipe Name*" />
                 <div>
-                    <input onChange={this.handleIngredientChange} type="text" name="ingName" value={ingName} placeholder="Ingredient name*" />
+                    
                     <input onChange={this.handleIngredientChange} type="number" name="amount" value={amount} placeholder="Amt.*" />
                     <select name="unit" value={unit} id="unit" onChange={this.handleIngredientChange}>
                         <option value="-">-</option>
@@ -140,10 +140,14 @@ class Form extends Component {
                         <option value="small">small</option>
                         <option value="medium">medium</option>
                         <option value="large">large</option>
+                        <option value="whole"></option>
+                        <option value="cloves"></option>
                         <option value="ounce(s)">ounce(s)</option>
                         <option value="pound(s)">pound(s)</option>
                         <option value="can(s)">can(s)</option>
+                        <option value="jar"></option>
                     </select>
+                    <input onChange={this.handleIngredientChange} type="text" name="ingName" value={ingName} placeholder="Ingredient name*" />
                     <button type="button" onClick={this.addIngredient}>Add Ingredient</button>
                 </div>
                 <ul>

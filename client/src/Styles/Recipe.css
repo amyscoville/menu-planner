@@ -1,17 +1,6 @@
-.recipe-nav {
-    height: 30px;
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-}
-
-.recipe-nav-btn {
-    margin: 5px;
-}
-
 .recipe-wrapper {
     width: 200px;
-    height: 250px;
+    height: 275px;
     margin: 15px;
     text-align: center;
 }
@@ -19,4 +8,77 @@
 .recipe-img {
     width: 300px;
     height: 300px;
+}
+
+.recipe-name {
+    margin-top: 10px;
+}
+
+.recipe-link {
+    color: #323031;
+    text-decoration: none;
+}
+
+.delete {
+    color: #DB3A34;
+    height: 30px;
+    width: 30px;
+    float: right; 
+}
+
+.delete:hover {
+    cursor: pointer;
+}
+
+.trash {
+    height: 90%;
+    width: auto;
+}
+
+.add-to-menu {
+    background-color: #177E89;
+    color: white;
+    border-radius: 3px;
+    padding: 3px 5px;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.add-to-menu {
+    cursor: pointer;
+}
+
+.add-form {
+    margin-top: 10px;
+}
+
+.choose {
+    font-size: 15px;
+    background-color: white;
+}
+
+.add-confirm {
+    background-color: #FFC857;
+    color: white;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 2px 5px;
+}
+
+.add-confirm:hover {
+    cursor: pointer;
+}
+
+.add-cancel {
+    background-color: #177E89;
+    color: white;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 2px 5px;
+}
+
+.add-cancel {
+    cursor: pointer;
 }

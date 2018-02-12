@@ -5,6 +5,8 @@ import { deleteRecipe } from '../redux/recipes';
 import { connect } from 'react-redux';
 import Form from './Form';
 
+import '../Styles/IndvRecipe.css';
+
 
 class IndvRecipe extends Component {
     constructor(props) {
@@ -36,16 +38,24 @@ class IndvRecipe extends Component {
         return (
             !loading ?
                 <div>
-                    <nav> <Link to='/recipes'>back to recipes</Link> <Link to="/buildmenu">menu</Link></nav>
-                    <div style={imgStyle}></div>
-                    <h1>{name}</h1>
-                    <ul>
-                        {ingredients && ingredients.map((ingredient, index) => {
-                            return <li key={index}>{`${ingredient.amount} ${ingredient.unit} ${ingredient.ingName}`}</li>
-                        })}
-                    </ul>
-                    <p>{directions}</p>
-                    <button onClick={this.toggleEdit}>edit recipe</button> 
+                    <nav className="indv-recipe-nav"> <div className="spiced">Spiced</div> <div><Link to='/recipes' className="indv-recipe-nav-btn ">RECIPES</Link> <Link to="/buildmenu" className="indv-recipe-nav-btn indv-menu">MENU</Link></div></nav>
+                    <div className="indv-recipe-wrapper">
+                        <div className="img-btn-wrapper">
+                            <div style={imgStyle}></div>
+                            <button onClick={this.toggleEdit}>edit recipe</button>
+                        </div>
+                        <div className="indv-recipe-info">
+                            <h1 className="recipe-name-h4">{name}</h1>
+                            <h3>Ingredients:</h3>
+                            <ul className="ing-ul">
+                                {ingredients && ingredients.map((ingredient, index) => {
+                                    return <li className="ing-li" key={index}>{`${ingredient.amount} ${ingredient.unit} ${ingredient.ingName}`}</li>
+                                })}
+                            </ul>
+                            <h3 className="directions-header">Directions:</h3>
+                            <p>{directions}</p>
+                        </div>
+                    </div>
                 </div>
                 :
                 <div>LOADING</div>

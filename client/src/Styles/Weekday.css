@@ -1,6 +1,11 @@
 .weekday {
-    border: 1px solid black; 
+    border: 1px solid #323031; 
     margin: 5px;
+}
+
+.weekday-link {
+    color: #323031;
+    text-decoration: none;
 }
 
 .day-name {
@@ -10,4 +15,5 @@
 .weekday-recipe {
     padding: 10px;
     display: flex;
+    align-items: center;
 }

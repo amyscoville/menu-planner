@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import recipeDefault from '../images/recipe-default.png';
 import { Link } from "react-router-dom";
+import trashIcon from './trash-icon.png';
 import '../Styles/Recipe.css';
 
 class Recipe extends Component {
@@ -41,21 +42,21 @@ class Recipe extends Component {
         return (
             deleteRecipe ?
                 <div className="recipe-wrapper">
-                    <Link to={`/recipes/${_id}`} >
+                    <Link className="recipe-link" to={`/recipes/${_id}`} >
                         <div style={imgStyle}></div>
-                        <h4>{name}</h4>
+                        <h4 className="recipe-name">{name}</h4>
                     </Link>
-                    <button onClick={() => { deleteRecipe(_id) }}>delete recipe</button>
+                    <div className="delete" onClick={() => { deleteRecipe(_id)}}><img className="trash"src={trashIcon} alt="delete"/></div>
                 </div>
                 :
                 <div className="recipe-wrapper">
-                    <Link to={`/recipes/${_id}`} >
+                    <Link className="recipe-link" to={`/recipes/${_id}`} >
                         <div style={imgStyle}></div>
-                        <h4>{name}</h4>
+                        <h4 className="recipe-name">{name}</h4>
                     </Link>
-                    <button style={{ display: (showSelect ? 'none' : 'block'), margin: 'auto' }} onClick={this.toggleSelect}>add to menu</button>
-                    <div style={{ display: (showSelect ? 'block' : 'none') }}>
-                        <select value={weekday} onChange={this.handleChange}>
+                    <button className="add-to-menu" style={{ display: (showSelect ? 'none' : 'block'), margin: '10px auto' }} onClick={this.toggleSelect}>add to menu</button>
+                    <div className="add-form" style={{ display: (showSelect ? 'block' : 'none') }}>
+                        <select className="choose" value={weekday} onChange={this.handleChange}>
                             <option value="choose-day">choose day</option>
                             <option value="monday">Monday</option>
                             <option value="tuesday">Tuesday</option>
@@ -65,8 +66,8 @@ class Recipe extends Component {
                             <option value="saturday">Saturday</option>
                             <option value="sunday">Sunday</option>
                         </select>
-                        <button onClick={() => {this.addToMenu(_id)}}>add</button> 
-                        <button onClick={this.toggleSelect}>cancel</button>
+                        <button className="add-confirm" onClick={() => {this.addToMenu(_id)}}>add</button> 
+                        <button className="add-cancel" onClick={this.toggleSelect}>cancel</button>
                     </div>
                 </div>
         )

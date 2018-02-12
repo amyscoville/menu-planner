@@ -20,16 +20,14 @@ class MenuMaker extends Component {
         let { recipes } = this.props;
         return (
             <div className="menu-maker-wrapper">
-                <nav className='menu-nav'><Link className='home' to="/recipes">home</Link> </nav>
+                <nav className='menu-nav'><div className="spiced-menu">Spiced</div><Link className='home' to="/recipes">RECIPES</Link> </nav>
                 <div className="grid-wrapper">
-                    <div className="recipe-display-wrapper">
+                    <div className="menu-recipe-display-wrapper">
                         {recipes.map((recipe, index) => {
                             return <Recipe key={index} addToMenu={this.addToMenu} recipe={recipe} />
                         })}
                     </div>
-                    <div className="menu-template-wrapper">
-                        <MenuTemplate />
-                    </div>
+                    <MenuTemplate />
                 </div>
             </div>
         )

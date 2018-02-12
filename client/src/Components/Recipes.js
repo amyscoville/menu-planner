@@ -16,6 +16,8 @@ class Recipes extends Component {
             showModal: false
         }
         this.toggleModal = this.toggleModal.bind(this);
+        this.deleteRecipe = this.deleteRecipe.bind(this);
+        this.clickDelete = this.clickDelete.bind(this);
     }
     componentDidMount() {
         this.props.getRecipes();
@@ -33,10 +35,9 @@ class Recipes extends Component {
 
     clickDelete(id) {
         confirmAlert({
-            title: 'Confirm to submit',
-            message: 'Are you sure you want to delete this recipe?',
+            message: 'Are you sure you want to delete this recipe? \nThis action cannot be undone.',
             confirmLabel: 'Yes',
-            cancelLabel: 'Cancel',
+            cancelLabel: 'No',
             onConfirm: () => this.deleteRecipe(id)
         });
     }
@@ -48,20 +49,24 @@ class Recipes extends Component {
                 <div>
                     <Modal toggle={this.toggleModal} />
                     <div className="recipes-wrapper">
-                        <nav className="recipe-nav"> <button className="recipe-nav-btn" onClick={this.toggleModal}>ADD RECIPE</button> <Link to="/buildmenu"><button className="recipe-nav-btn">MAKE MENU</button></Link></nav>
-                        {recipes.map((recipe, index) => {
-                            return <Recipe key={index} recipe={recipe} deleteRecipe={this.deleteRecipe} />
-                        })}
+                        <nav className="recipes-nav"> <div className="spiced">Spiced</div><div className="recipes-buttons"><div className="recipes-nav-btn" onClick={this.toggleModal}>ADD RECIPE</div> <Link className="recipes-nav-btn make-menu"to="/buildmenu">MAKE MENU</Link></div></nav>
+                        <div className="recipe-display-wrapper">
+                            {recipes.map((recipe, index) => {
+                                return <Recipe key={index} recipe={recipe} deleteRecipe={this.clickDelete} />
+                            })}
+                        </div>
                     </div>
                 </div>
             )
         }
         return (
             <div className="recipes-wrapper">
-                <nav className="recipe-nav"> <button className="recipe-nav-btn" onClick={this.toggleModal}>ADD RECIPE</button> <Link to="/buildmenu"><button className="recipe-nav-btn">MENU</button></Link></nav>
-                {recipes.map((recipe, index) => {
-                    return <Recipe key={index} recipe={recipe} deleteRecipe={() => {this.clickDelete(recipe._id)}}/>
-                })}
+            <nav className="recipes-nav"> <div className="spiced">Spiced</div><div className="recipes-buttons"><div className="recipes-nav-btn" onClick={this.toggleModal}>ADD RECIPE</div> <Link className="recipes-nav-btn make-menu"to="/buildmenu">MAKE MENU</Link></div></nav>
+            <div className="recipe-display-wrapper">
+                    {recipes.map((recipe, index) => {
+                        return <Recipe key={index} recipe={recipe} deleteRecipe={this.clickDelete} />
+                    })}
+                </div>
             </div>
         )
     }

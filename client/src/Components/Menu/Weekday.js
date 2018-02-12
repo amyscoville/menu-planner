@@ -10,8 +10,8 @@ function Weekday(props) {
         let { imgUrl, name,_id } = props.recipe;
         return (
             <div className='weekday'>
-                <Link to={`/recipes/${_id}`}>
-                    <h3 className='day-name'>{day}</h3>
+                <Link className="weekday-link" to={`/recipes/${_id}`}>
+                    <h4 className='day-name'>{day}</h4>
                     <div className='weekday-recipe'>
                         <div style={{ backgroundImage: `url(${imgUrl ? imgUrl : recipeDefault})`, backgroundPosition: `center`, backgroundSize: `cover`, height: '40px', width: '40px', marginRight: '5px' }}></div>
                         <p>{name}</p>
@@ -22,7 +22,7 @@ function Weekday(props) {
     } else {
         return (
             <div className='weekday'>
-                <h3 className='day-name'>{day}</h3>
+                <h4 className='day-name'>{day}</h4>
                 <div className='weekday-recipe'>
                     <div style={{ backgroundImage: `url(${recipeDefault})`, backgroundPosition: `center`, backgroundSize: `cover`, height: '40px', width: '40px', marginRight: '5px' }}></div>
                     <p>Select a recipe</p>

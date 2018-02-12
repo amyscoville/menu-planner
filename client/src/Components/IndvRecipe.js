@@ -33,7 +33,11 @@ class IndvRecipe extends Component {
         let { loading } = this.props.recipe;
         let imgStyle = { backgroundImage: `url(${imgUrl})`, height: "300px", width: "300px", backgroundSize: "cover", backgroundPosition: "center" }
         if (this.state.editing) {
-            return <Form toggle={this.toggleEdit}{...this.props.recipe.data} />
+            return (
+                <div className="edit-form-wrapper">
+                    <Form toggle={this.toggleEdit}{...this.props.recipe.data} />
+                </div>
+            )
         }
         return (
             !loading ?
@@ -42,7 +46,7 @@ class IndvRecipe extends Component {
                     <div className="indv-recipe-wrapper">
                         <div className="img-btn-wrapper">
                             <div style={imgStyle}></div>
-                            <button onClick={this.toggleEdit}>edit recipe</button>
+                            <button className="edit-recipe-btn" onClick={this.toggleEdit}>edit recipe</button>
                         </div>
                         <div className="indv-recipe-info">
                             <h1 className="recipe-name-h4">{name}</h1>

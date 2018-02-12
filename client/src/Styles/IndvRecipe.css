@@ -34,13 +34,17 @@
     display: flex;
 }
 
-.img-btn-wrapper > button{
+.edit-recipe-btn {
     margin-top: 15px;
-    background-color: #084C61;
+    background-color: #FFC857;
     color: white;
     font-size: 20px;
     border: none;
     border-radius: 5px;
+}
+
+.edit-recipe-btn:hover {
+    cursor: pointer;
 }
 
 .indv-recipe-info {
@@ -62,4 +66,15 @@
 
 .directions-header {
     margin: 10px 0px;
+}
+
+.edit-form-wrapper {
+    width: 500px;
+    margin: 20px;
+}
+
+@media(max-width: 550px) {
+    .edit-form-wrapper {
+        width: 350px;
+    }
 }

@@ -18,7 +18,7 @@ function Weekday(props) {
                     </div>
                 </Link>
             </div>
-        )
+        );
     } else {
         return (
             <div className='weekday'>
@@ -28,7 +28,7 @@ function Weekday(props) {
                     <p>Select a recipe</p>
                 </div>
             </div>
-        )
+        );
     }
 
 }

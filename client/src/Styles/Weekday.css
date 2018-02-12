@@ -12,8 +12,22 @@
     padding: 5px 10px;
 }
 
+@media(max-width: 425px) {
+    .day-name {
+        font-size: 13px;
+        padding: 3px 7px;
+    }
+}
+
 .weekday-recipe {
     padding: 10px;
     display: flex;
     align-items: center;
+}
+
+@media(max-width: 425px) {
+    .weekday-recipe {
+        font-size: 10px;
+        padding: 4px;
+    }
 }

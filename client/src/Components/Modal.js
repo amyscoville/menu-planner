@@ -13,7 +13,8 @@ class Modal extends Component {
             padding: 50,
             display: "flex",
             justifyContent: "center",
-            alignItems: "center"
+            alignItems: "center",
+            zIndex: 1
         }
         let popUpStyle = {
             backgroundColor: '#fff',
@@ -21,7 +22,8 @@ class Modal extends Component {
             maxWidth: 800,
             minHeight: 500,
             margin: '0 auto',
-            padding: 30
+            padding: 30,
+            zIndex: 1
         }
         return (
             <div style={backgroundStyle} className="modal-main-wrapper">

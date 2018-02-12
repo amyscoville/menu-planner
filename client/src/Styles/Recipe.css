@@ -5,9 +5,11 @@
     text-align: center;
 }
 
-.recipe-img {
-    width: 300px;
-    height: 300px;
+@media(max-width: 425px) {
+    .recipe-wrapper {
+        width: 175px;
+        margin: 20px;
+    }
 }
 
 .recipe-name {

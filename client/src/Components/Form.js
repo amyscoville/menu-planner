@@ -128,11 +128,10 @@ class Form extends Component {
         let { ingredients } = this.state;
         return (
             <form onSubmit={this.formSubmit} className="form-wrapper">
-                <input onChange={this.handleChange} type="text" name="name" value={name} placeholder="Recipe Name*" />
-                <div>
-                    
-                    <input onChange={this.handleIngredientChange} type="number" name="amount" value={amount} placeholder="Amt.*" />
-                    <select name="unit" value={unit} id="unit" onChange={this.handleIngredientChange}>
+                <input className="recipe-name" onChange={this.handleChange} type="text" name="name" value={name} placeholder="Recipe Name*" />
+                <div className="ing-form">
+                    <input className="qty" onChange={this.handleIngredientChange} type="number" name="amount" value={amount} placeholder="Qty*" />
+                    <select name="unit" value={unit} id="unit" onChange={this.handleIngredientChange} placeholder="unit">
                         <option value="-">-</option>
                         <option value="teaspoon(s)">teaspoon(s)</option>
                         <option value="tablespoon(s)">tablespoon(s)</option>
@@ -140,25 +139,27 @@ class Form extends Component {
                         <option value="small">small</option>
                         <option value="medium">medium</option>
                         <option value="large">large</option>
-                        <option value="whole"></option>
-                        <option value="cloves"></option>
+                        <option value="whole">whole</option>
+                        <option value="cloves">clove(s)</option>
                         <option value="ounce(s)">ounce(s)</option>
                         <option value="pound(s)">pound(s)</option>
                         <option value="can(s)">can(s)</option>
-                        <option value="jar"></option>
+                        <option value="jar">jar(s)</option>
                     </select>
                     <input onChange={this.handleIngredientChange} type="text" name="ingName" value={ingName} placeholder="Ingredient name*" />
-                    <button type="button" onClick={this.addIngredient}>Add Ingredient</button>
+                    <button className="add-ing"type="button" onClick={this.addIngredient}>Add</button>
                 </div>
-                <ul>
+                <ul className="ing-list">
                     {ingredients.map((ingredient, index) => {
-                        return <li key={index}>{ingredient.amount}{ingredient.unit}{ingredient.ingName} <button type="button" onClick={() => { this.deleteIngredient(index) }}>X</button> </li>
+                        return <li key={index}>{`${ingredient.amount} ${ingredient.unit} ${ingredient.ingName}  `}<button type="button" onClick={() => { this.deleteIngredient(index) }}>X</button> </li>
                 })}
                 </ul>
-                <textarea onChange={this.handleChange} type="text" name="directions" value={directions} placeholder="Directions*" />
-                <input onChange={this.handleChange} type="text" name="imgUrl" value={imgUrl} placeholder="Image URL (optional)" />
-                <p>*Required</p>
-                <button type="submit">submit</button> <button type="button" onClick={this.props.toggle}>cancel</button>
+                <textarea className="directions" onChange={this.handleChange} type="text" name="directions" value={directions} placeholder="Directions*" />
+                <input className="img-url"onChange={this.handleChange} type="text" name="imgUrl" value={imgUrl} placeholder="Image URL (optional)" />
+                <p className="required">*Required</p>
+                <div className="form-buttons">
+                    <button className="form-button submit" type="submit">submit</button> <button className="form-button" type="button" onClick={this.props.toggle}>cancel</button>
+                </div>
             </form>
         )
     }

@@ -7,4 +7,77 @@
 
 form > * {
     margin: 10px 0;
+    border-radius: 3px;
+    border: .5px solid lightgray;
+}
+
+form > input {
+    padding-left: 5px;
+}
+
+.recipe-name, .img-url {
+    height: 30px;
+}
+
+.ing-form, .ing-list, .required, .form-buttons {
+    border: none;
+}
+
+.ing-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ing-form > * {
+    height: 30px;
+    margin: 3px 3px;
+    border-radius: 3px;
+    border: .5px solid lightgray;
+}
+
+.qty {
+    width: 35px;
+    margin-left: 0px;
+}
+
+.add-ing {
+    margin-right: 0px;
+    background-color: #FFC857;
+    color: white;
+    font-size: 12px;
+}
+
+@media(max-width: 450px) {
+    .add-ing {
+        width: 70px;
+    }
+}
+
+.directions {
+    resize: none;
+    height: 60px;
+    padding-left: 5px;
+}
+
+.required {
+    font-size: 10px;
+}
+
+.form-button {
+    height: 30px;
+    width: 80px;
+    color: white;
+    font-size: 20px;
+    background-color: #177E89;
+    border-radius: 5px;
+    float: right;
+}
+
+.form-button:hover {
+    cursor: pointer;
+}
+
+.submit {
+    background-color: #DB3A34;
 }

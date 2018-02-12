@@ -38,6 +38,12 @@
     margin-top: 55px;
 }
 
+@media(max-width: 1100px) {
+    .grid-wrapper {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
 .menu-recipe-display-wrapper {
     grid-area: r;
     display: flex;

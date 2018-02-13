@@ -34,7 +34,7 @@
     grid-template-columns: 2fr 1fr;
     grid-gap: 10px;
     grid-template-areas: "r m";
-    height: 85vh;
+    /* height: 85vh; */
     margin-top: 55px;
 }
 
@@ -50,11 +50,13 @@
     flex-wrap: wrap;
     justify-content: center;
     overflow: scroll;
+    height: 85vh;
     padding-top: 20px;
 }
 
 .menu-template-wrapper {
     padding: 10px;
+    height: 85vh;
     height: 85vh;
 }
 

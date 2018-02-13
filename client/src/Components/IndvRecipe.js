@@ -31,7 +31,7 @@ class IndvRecipe extends Component {
     render() {
         let { name, imgUrl, directions, ingredients } = this.props.recipe.data;
         let { loading } = this.props.recipe;
-        let imgStyle = { backgroundImage: `url(${imgUrl})`, height: "300px", width: "300px", backgroundSize: "cover", backgroundPosition: "center" }
+        let imgStyle = { backgroundImage: `url(${imgUrl})`, backgroundSize: "cover", backgroundPosition: "center" }
         if (this.state.editing) {
             return (
                 <div className="edit-form-wrapper">
@@ -44,12 +44,12 @@ class IndvRecipe extends Component {
                 <div>
                     <nav className="indv-recipe-nav"> <div className="spiced">Spiced</div> <div><Link to='/recipes' className="indv-recipe-nav-btn ">RECIPES</Link> <Link to="/buildmenu" className="indv-recipe-nav-btn indv-menu">MENU</Link></div></nav>
                     <div className="indv-recipe-wrapper">
-                        <div className="img-btn-wrapper">
-                            <div style={imgStyle}></div>
+                        <div className="indv-recipe-img" style={imgStyle}></div>
+                        <div className="title-btn">
+                            <h1 className="recipe-name-h4">{name}</h1>
                             <button className="edit-recipe-btn" onClick={this.toggleEdit}>edit recipe</button>
                         </div>
-                        <div className="indv-recipe-info">
-                            <h1 className="recipe-name-h4">{name}</h1>
+                        <div className="recipe-inf">
                             <h3>Ingredients:</h3>
                             <ul className="ing-ul">
                                 {ingredients && ingredients.map((ingredient, index) => {
@@ -59,6 +59,7 @@ class IndvRecipe extends Component {
                             <h3 className="directions-header">Directions:</h3>
                             <p>{directions}</p>
                         </div>
+
                     </div>
                 </div>
                 :

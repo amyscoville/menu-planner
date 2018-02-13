@@ -130,22 +130,24 @@ class Form extends Component {
             <form onSubmit={this.formSubmit} className="form-wrapper">
                 <input className="recipe-name" onChange={this.handleChange} type="text" name="name" value={name} placeholder="Recipe Name*" />
                 <div className="ing-form">
-                    <input className="qty" onChange={this.handleIngredientChange} type="number" name="amount" value={amount} placeholder="Qty*" />
-                    <select name="unit" value={unit} id="unit" onChange={this.handleIngredientChange} placeholder="unit">
-                        <option value="-">-</option>
-                        <option value="teaspoon(s)">teaspoon(s)</option>
-                        <option value="tablespoon(s)">tablespoon(s)</option>
-                        <option value="cup(s)">cup(s)</option>
-                        <option value="small">small</option>
-                        <option value="medium">medium</option>
-                        <option value="large">large</option>
-                        <option value="whole">whole</option>
-                        <option value="cloves">clove(s)</option>
-                        <option value="ounce(s)">ounce(s)</option>
-                        <option value="pound(s)">pound(s)</option>
-                        <option value="can(s)">can(s)</option>
-                        <option value="jar">jar(s)</option>
-                    </select>
+                    <div className="qty-unit">
+                        <input className="qty" onChange={this.handleIngredientChange} type="number" name="amount" value={amount} placeholder="Qty*" />
+                        <select name="unit" value={unit} id="unit" onChange={this.handleIngredientChange} placeholder="unit">
+                            <option value="-">-</option>
+                            <option value="teaspoon(s)">teaspoon(s)</option>
+                            <option value="tablespoon(s)">tablespoon(s)</option>
+                            <option value="cup(s)">cup(s)</option>
+                            <option value="small">small</option>
+                            <option value="medium">medium</option>
+                            <option value="large">large</option>
+                            <option value="whole">whole</option>
+                            <option value="cloves">clove(s)</option>
+                            <option value="ounce(s)">ounce(s)</option>
+                            <option value="pound(s)">pound(s)</option>
+                            <option value="can(s)">can(s)</option>
+                            <option value="jar">jar(s)</option>
+                        </select>
+                    </div>
                     <input onChange={this.handleIngredientChange} type="text" name="ingName" value={ingName} placeholder="Ingredient name*" />
                     <button className="add-ing"type="button" onClick={this.addIngredient}>Add</button>
                 </div>

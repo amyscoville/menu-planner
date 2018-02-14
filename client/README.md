@@ -24,7 +24,7 @@ Create a straightforward, user-friendly app for managing recipes and planning me
 
 Main Mobile View | Add Recipe Mobile View | Individual Recipe Mobile View | Menu Mobile View
 --- | --- | --- | ---
-<img alt="main-mobile-view" src="readme-images/mobile-recipes.png" width="200" height="auto"> | <img alt="add-recipe-mobile-view" src="readme-images/mobile-form.png" width="200" height="auto"> | <img alt="indv-recipe-mobile-view" src="readme-images/mobile-indv.png" width="200" height="auto"> | <img alt="menu-mobile-view" src="readme-images/mobile-menu.png" width="200" height="auto">
+<img style="border: 1px solid black;" alt="main-mobile-view" src="readme-images/mobile-recipes.png" width="200" height="auto"> | <img style="border: 1px solid black;" alt="add-recipe-mobile-view" src="readme-images/mobile-form.png" width="200" height="auto"> | <img style="border: 1px solid black;" alt="indv-recipe-mobile-view" src="readme-images/mobile-indv.png" width="200" height="auto"> | <img style="border: 1px solid black;" alt="menu-mobile-view" src="readme-images/mobile-menu.png" width="200" height="auto">
 
 
 

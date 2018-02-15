@@ -79,7 +79,7 @@ The code below is the `render` function of the `IndvRecipe` component. The "edit
 ## Future Ideas
 
 * User authenticatfion
-* Self-populating gorcery list based on menu items (editable)
+* Self-populating grocery list based on menu items (editable)
 * Send grocery list by e-mail
 * Staples list from which user can select items to add to final shopping list
 * Allow user to select number of weeks for menu planning

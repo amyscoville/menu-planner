@@ -9,16 +9,16 @@ Create a straightforward, user-friendly app for managing recipes and planning me
 ## Web Views
 
 ##### Main/Recipes Web View
-![recipes-web](readme-images/web-recipes.png)
+![recipes-web](client/readme-images/web-recipes.png)
 
-#### Add Recipe Modal Web View
-![recipe-modal](readme-images/web-form.png)
+##### Add Recipe Modal Web View
+![recipe-modal](client/readme-images/web-form.png)
 
 ##### Individual Recipe Web View
-![individual-recipe-web](readme-images/web-indv.png)
+![individual-recipe-web](client/readme-images/web-indv.png)
 
 ##### Menu Web View
-![menu-web](readme-images/web-recipes.png)
+![menu-web](client/readme-images/web-recipes.png)
 
 ## Mobile Views
 
@@ -83,8 +83,3 @@ The code below is the `render` function of the `IndvRecipe` component. The "edit
 * Send grocery list by e-mail
 * Staples list from which user can select items to add to final shopping list
 * Allow user to select number of weeks for menu planning
-
-
-
-
-

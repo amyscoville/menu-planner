@@ -5,6 +5,11 @@ const MenuSchema = new mongoose.Schema({
     recipeId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Recipes"
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: true
     }
 });
 

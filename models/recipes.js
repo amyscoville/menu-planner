@@ -9,7 +9,12 @@ const RecipeSchema = new mongoose.Schema({
         unit: String
     }],
     directions: String,
-    cookTime: String
+    cookTime: String,
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: true
+    }
 });
 
 module.exports = mongoose.model("Recipes", RecipeSchema);

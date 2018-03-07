@@ -7,7 +7,7 @@ const MenuSchema = new mongoose.Schema({
         ref: "Recipes"
     },
     user: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true
     }

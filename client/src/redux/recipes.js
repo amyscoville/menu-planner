@@ -2,7 +2,9 @@ import axios from 'axios';
 
 const recipesUrl ='/recipes';
 
-const recipesReducer = (recipes = [], action) => {
+const initialRecipes = []
+
+const recipesReducer = (recipes = initialRecipes, action) => {
     switch (action.type) {
         case 'GET_RECIPES':
             return action.recipes;
@@ -21,8 +23,10 @@ const recipesReducer = (recipes = [], action) => {
             return recipeArr.filter((recipe) => {
                     return recipe._id !== action.id;
                 })
+        case "LOGOUT":  
+            return initialRecipes; 
         default:
-            return recipes;
+            return initialRecipes;
     }
 }
 

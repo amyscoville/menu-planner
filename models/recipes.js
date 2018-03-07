@@ -11,7 +11,7 @@ const RecipeSchema = new mongoose.Schema({
     directions: String,
     cookTime: String,
     user: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true
     }

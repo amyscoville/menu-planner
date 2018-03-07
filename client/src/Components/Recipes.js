@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getRecipes, deleteRecipe } from '../redux/recipes';
-import {Link} from 'react-router-dom';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import Recipe from './Recipe.js';
@@ -49,7 +48,6 @@ class Recipes extends Component {
                 <div>
                     <Modal toggle={this.toggleModal} />
                     <div className="recipes-wrapper">
-                        <nav className="recipes-nav"> <div className="spiced">Spiced</div><div className="recipes-buttons"><div className="recipes-nav-btn" onClick={this.toggleModal}>ADD RECIPE</div> <Link className="recipes-nav-btn make-menu"to="/buildmenu">MAKE MENU</Link></div></nav>
                         <div className="recipe-display-wrapper">
                             {recipes.map((recipe, index) => {
                                 return <Recipe key={index} recipe={recipe} deleteRecipe={this.clickDelete} />
@@ -61,7 +59,6 @@ class Recipes extends Component {
         }
         return (
             <div className="recipes-wrapper">
-            <nav className="recipes-nav"> <div className="spiced">Spiced</div><div className="recipes-buttons"><div className="recipes-nav-btn" onClick={this.toggleModal}>ADD RECIPE</div> <Link className="recipes-nav-btn make-menu"to="/buildmenu">MAKE MENU</Link></div></nav>
             <div className="recipe-display-wrapper">
                     {recipes.map((recipe, index) => {
                         return <Recipe key={index} recipe={recipe} deleteRecipe={this.clickDelete} />

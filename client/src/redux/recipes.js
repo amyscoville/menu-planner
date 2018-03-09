@@ -1,6 +1,12 @@
 import axios from 'axios';
 
-const recipesUrl ='/recipes';
+axios.interceptors.request.use((config) => {
+    let token = localStorage.getItem("token");
+    config.headers.Authorization = `Bearer ${token}`;
+    return config;
+})
+
+const recipesUrl = '/api/recipes';
 
 const initialRecipes = []
 
@@ -12,26 +18,26 @@ const recipesReducer = (recipes = initialRecipes, action) => {
             return [...recipes, action.newRecipe];
         case 'UPDATE_RECIPE':
             let newRecipes = recipes;
-            for(let i = 0; i < newRecipes.length; i++) {
-                if(action.updatedRecipe._id === newRecipes[i]._id) {
+            for (let i = 0; i < newRecipes.length; i++) {
+                if (action.updatedRecipe._id === newRecipes[i]._id) {
                     newRecipes[i] = Object.assign(newRecipes[i], action.updatedRecipe);
                 }
             }
             return newRecipes;
         case "DELETE_RECIPE":
-            let recipeArr = recipes
+            let recipeArr = recipes;
             return recipeArr.filter((recipe) => {
-                    return recipe._id !== action.id;
-                })
-        case "LOGOUT":  
-            return initialRecipes; 
-        default:
+                return recipe._id !== action.id;
+            })
+        case "LOGOUT":
             return initialRecipes;
+        default:
+            return recipes;
     }
 }
 
 export function getRecipes() {
-    return function(dispatch) {
+    return function (dispatch) {
         axios.get(recipesUrl)
             .then(response => {
                 dispatch({
@@ -46,7 +52,7 @@ export function getRecipes() {
 }
 
 export function addRecipe(newRecipe) {
-    return function(dispatch) {
+    return function (dispatch) {
         axios.post(recipesUrl, newRecipe)
             .then(response => {
                 dispatch({

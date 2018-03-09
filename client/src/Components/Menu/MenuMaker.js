@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { getRecipes } from '../../redux/recipes';
 import { addMenuItem } from '../../redux/menu';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import Recipe from '../Recipe';
 import MenuTemplate from './MenuTemplate';
 import '../../Styles/MenuMaker.css'
@@ -20,7 +19,6 @@ class MenuMaker extends Component {
         let { recipes } = this.props;
         return (
             <div className="menu-maker-wrapper">
-                {/* <nav className='menu-nav'><div className="spiced-menu">Spiced</div><Link className='home' to="/recipes">RECIPES</Link> </nav> */}
                 <div className="grid-wrapper">
                     <div className="menu-recipe-display-wrapper">
                         {recipes.map((recipe, index) => {

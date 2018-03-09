@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const expressJwt = require("express-jwt");
 const authRoutes = require('./routes/auth');
+const userRoute = require('./routes/user');
 const recipesRoutes = require('./routes/recipes');
 const menuRoutes = require('./routes/menu');
 
@@ -22,6 +23,7 @@ app.use('/api/recipes', recipesRoutes);
 app.use('/api/menu', menuRoutes);
 
 app.use('/auth', authRoutes);
+app.use('/user', userRoute);
 
 app.listen(config.port, () => {
     console.log('Listening on port' + config.port);

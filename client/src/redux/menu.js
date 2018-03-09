@@ -1,30 +1,37 @@
 import axios from "axios";
+
 import { parseMenu, updateMenu } from "./utils";
 
+axios.interceptors.request.use(config => {
+    let token = localStorage.getItem("token");
+    config.headers.Authorization = `Bearer ${token}`;
+    return config;
+});
+
 let defaultMenu = [
-        {
-            day: "monday",
-            recipe: null
-        }, {
-            day: "tuesday",
-            recipe: null
-        }, {
-            day: "wednesday",
-            recipe: null
-        }, {
-            day: "thursday",
-            recipe: null
-        }, {
-            day: "friday",
-            recipe: null
-        }, {
-            day: "saturday",
-            recipe: null
-        }, {
-            day: "sunday",
-            recipe: null
-        }
-    ]
+    {
+        day: "monday",
+        recipe: null
+    }, {
+        day: "tuesday",
+        recipe: null
+    }, {
+        day: "wednesday",
+        recipe: null
+    }, {
+        day: "thursday",
+        recipe: null
+    }, {
+        day: "friday",
+        recipe: null
+    }, {
+        day: "saturday",
+        recipe: null
+    }, {
+        day: "sunday",
+        recipe: null
+    }
+]
 
 let menuReducer = (menu = { data: defaultMenu, loading: true }, action) => {
     switch (action.type) {
@@ -46,7 +53,7 @@ let menuReducer = (menu = { data: defaultMenu, loading: true }, action) => {
 
 export const getMenuItems = () => {
     return dispatch => {
-        axios.get(`/menu`)
+        axios.get(`/api/menu`)
             .then(response => {
                 dispatch({
                     type: 'GET_MENU_ITEMS',
@@ -61,7 +68,7 @@ export const getMenuItems = () => {
 
 export const addMenuItem = (day, id) => {
     return dispatch => {
-        axios.put(`/menu/${day}`, {day: day, recipeId: id})
+        axios.put(`/menu/${day}`, { day: day, recipeId: id })
             .then(response => {
                 dispatch({
                     type: 'ADD_MENU_ITEM',

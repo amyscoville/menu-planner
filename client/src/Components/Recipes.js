@@ -14,25 +14,22 @@ class Recipes extends Component {
         this.state = {
             showModal: false
         }
-        this.toggleModal = this.toggleModal.bind(this);
-        this.deleteRecipe = this.deleteRecipe.bind(this);
-        this.clickDelete = this.clickDelete.bind(this);
     }
     componentDidMount() {
         this.props.getRecipes();
     }
 
-    toggleModal() {
+    toggleModal = () => {
         this.setState({
             showModal: !this.state.showModal
         })
     }
 
-    deleteRecipe(id) {
+    deleteRecipe = (id) => {
         this.props.deleteRecipe(id);
     }
 
-    clickDelete(id) {
+    clickDelete = (id) => {
         confirmAlert({
             message: 'Are you sure you want to delete this recipe? \nThis action cannot be undone.',
             confirmLabel: 'Yes',
@@ -43,11 +40,13 @@ class Recipes extends Component {
 
     render() {
         let {recipes} = this.props;
+        console.log(recipes);
         if (this.state.showModal) {
             return (
                 <div>
                     <Modal toggle={this.toggleModal} />
                     <div className="recipes-wrapper">
+                        <div className="recipes-nav-btn" onClick={this.toggleModal}>ADD RECIPE</div>
                         <div className="recipe-display-wrapper">
                             {recipes.map((recipe, index) => {
                                 return <Recipe key={index} recipe={recipe} deleteRecipe={this.clickDelete} />
@@ -59,7 +58,8 @@ class Recipes extends Component {
         }
         return (
             <div className="recipes-wrapper">
-            <div className="recipe-display-wrapper">
+                <div className="recipes-nav-btn" onClick={this.toggleModal}>ADD RECIPE</div>
+                <div className="recipe-display-wrapper">
                     {recipes.map((recipe, index) => {
                         return <Recipe key={index} recipe={recipe} deleteRecipe={this.clickDelete} />
                     })}

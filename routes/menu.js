@@ -6,7 +6,8 @@ const Menu = require('../models/menu');
 
 menuRoute.route('/')
     .get((req, res) => {
-        Menu.find(req.query).populate("recipeId", "name imgUrl cookTime").exec((err, menuItems) => {
+        let query = Object.assign(req.query, {user: req.user._id})
+        Menu.find(query).populate("recipeId", "name imgUrl cookTime").exec((err, menuItems) => {
             if (err) return res.status(500).send(err);
             return res.send(menuItems);
         });

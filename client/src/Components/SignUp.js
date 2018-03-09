@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { signup } from "../redux/auth";
 
+import '../Styles/SignUp.css';
+
 class SignUpForm extends Component {
     constructor(props) {
         super(props);
@@ -47,7 +49,7 @@ class SignUpForm extends Component {
     render() {
         let { username, password } = this.state.inputs;
         return (
-            <div>
+            <div className="signup-wrapper">
                 <form onSubmit={this.handleSubmit}>
                     {/* <input type="text" onChange={this.handleChange} name="name" value={} placeholder="Name"/> */}
                     {/* <input type="text" onChange={this.handleChange} name="" value={} placeholder="Email"/> */}

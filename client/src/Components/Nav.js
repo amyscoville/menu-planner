@@ -1,27 +1,34 @@
 import React, { Component } from 'react';
-import {Link} from "react-router-dom";  
-import {connect} from "react-redux";  
-import {logout} from "../redux/auth";
+import { Link, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { logout, verifyUser } from "../redux/auth";
+
+import '../Styles/Nav.css'
 
 class Nav extends Component {
+    componentWillReceiveProps() {
+        this.props.verifyUser();
+    }
+
     render() {
-        console.log("navbar props",this.props)
+        let { isAuthenticated } = this.props;
         return (
-            <nav className="recipes-nav">
+            <nav className="navbar">
                 <div className="spiced">Spiced</div>
                 <div className="recipes-buttons">
-                <div className="recipes-nav-btn" onClick={this.toggleModal}>ADD RECIPE</div> 
-                <Link className="recipes-nav-btn make-menu"to="/buildmenu">MAKE MENU</Link></div>
-                {this.props.user.isAuthenticated ? <button onClick={() => this.props.logout(this.props.history)}>LOGOUT</button> : null}
+                    {isAuthenticated ? null : <div><Link className="nav-links" to="/signup">Sign Up</Link></div>}
+                    {isAuthenticated ? null : <div><Link className="nav-links" to="/login">Log In</Link></div>}
+                    {isAuthenticated ? <Link className="recipes-nav-btn make-menu" to="/buildmenu">MAKE MENU</Link> : null}
+                    {isAuthenticated ? <button onClick={() => this.props.logout(this.props.history)}>LOGOUT</button> : null}
+                </div>
             </nav>
         )
     }
 }
 
 const mapStateToProps = (state) => {
-    return {
-        user: state.user
-    }
+    return state.user
 }
 
-export default connect(mapStateToProps, {logout})(Nav);
+export default withRouter(connect(mapStateToProps, { logout, verifyUser })(Nav));
+

@@ -34,8 +34,7 @@
     grid-template-columns: 2fr 1fr;
     grid-gap: 10px;
     grid-template-areas: "r m";
-    /* height: 85vh; */
-    margin-top: 55px;
+    padding-top: 55px;
 }
 
 @media(max-width: 1100px) {

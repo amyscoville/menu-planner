@@ -1,0 +1,22 @@
+.navbar {
+    background-color: #323031;
+    position: fixed;
+    height: 55px;
+    padding-right: 15px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.recipes-buttons {
+    display: flex;
+}
+
+.spiced {
+    padding-left: 3%;
+    padding-bottom: .5%;
+    font-family: 'Caveat Brush', cursive;
+    font-size: 35px;
+    color: #DB3A34;
+}

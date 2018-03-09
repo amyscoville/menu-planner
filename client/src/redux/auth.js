@@ -1,35 +1,57 @@
 import axios from "axios";
+const userAxios = axios.create();
+userAxios
+    .interceptors
+    .request
+    .use((config) => {
+        const token = localStorage.getItem("token");
+        config.headers.Authorization = `Bearer ${token}`;
+        return config
+    });
 
-const initialState = {  
+const initialState = {
     username: "",
     isAdmin: false,
     isAuthenticated: false
 }
 
-export default function reducer(state = initialState, action) {  
+export default function reducer(state = initialState, action) {
     switch (action.type) {
         case "AUTHENTICATE":
             return {
                 ...state,
                 ...action.user,
-                isAuthenticated: true
+                isAuthenticated: action.success
             }
-        case "LOGOUT":  
+        case "LOGOUT":
             return initialState;
         default:
             return state;
     }
 }
 
+export function verifyUser() {
+    return (dispatch) => {
+        userAxios.get("/user/verify")
+            .then((response) => {
+                let { user, success } = response.data
+                dispatch(authenticate(user, success));
+            })
+            .catch((err) => {
+                console.error(err)
+                dispatch(authenticate({}, false));
+            })
+    }
+}
+
 export function signup(userInfo) {
-    console.log('redux signup is being called')  
     return dispatch => {
         axios.post("/auth/signup", userInfo)
             .then(response => {
-                const {token, user} = response.data;
+                const { token, user, success } = response.data;
                 localStorage.token = token
                 localStorage.user = JSON.stringify(user);
-                dispatch(authenticate(user));
+                dispatch(authenticate(user, success));
             })
             .catch(err => {
                 console.error(err);
@@ -37,14 +59,15 @@ export function signup(userInfo) {
     }
 }
 
-export function login(credentials, history) {  
+export function login(credentials, history) {
     return dispatch => {
         axios.post("/auth/login", credentials)
             .then(response => {
-                const {token, user} = response.data;
+                console.log("login response data:", response.data)
+                const { token, user, success } = response.data;
                 localStorage.token = token
                 localStorage.user = JSON.stringify(user);
-                dispatch(authenticate(user));
+                dispatch(authenticate(user, success));
                 history.push('/recipes')
             })
             .catch((err) => {
@@ -53,14 +76,15 @@ export function login(credentials, history) {
     }
 }
 
-export function authenticate(user) {  
+export function authenticate(user, success) {
     return {
         type: "AUTHENTICATE",
-        user  // pass the user for storage in Redux store
+        user,
+        success
     }
 }
 
-export function logout(history) {  
+export function logout(history) {
     delete localStorage.token;
     delete localStorage.user;
     history.push('/login')

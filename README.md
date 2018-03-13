@@ -2,6 +2,8 @@
 
 Amy Scoville
 
+*This branch is where I have begun implementing user authentication with JWT. It is a work in progress. The master branch is fully functioning.
+
 ## Objective
 
 Create a straightforward, user-friendly app for managing recipes and planning menus. Allow users to add, edit, and delete recipes, and to update the weekly menu. 
